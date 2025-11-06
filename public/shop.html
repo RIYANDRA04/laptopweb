@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laptop Store - Shop</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container nav-inner">
+        <div class="brand">Laptop<span>Store ryan</span></div>
+        <nav class="nav-links">
+          <a href="shop.html" class="active">Shop</a>
+          <a href="about.html">About</a>
+          <a href="orders.html">Pesanan</a>
+          <a href="cart.html"
+            >Cart <span id="cartCount" class="badge">0</span></a
+          >
+          <a href="admin.html" class="admin-link" style="display: none"
+            >Admin</a
+          >
+          <a href="#" data-logout>Logout</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="hero-text">
+          <div class="hero-badge">Laptop Premium · Cicilan Ringan</div>
+          <h1>Pilih laptop terbaik untuk kuliah, kerja, dan gaming.</h1>
+          <p>
+            Toko laptop ryan berbasis web dengan tampilan responsif untuk
+            laptop, tablet, dan smartphone. Semua pesanan terekam rapi dan bisa
+            dipantau oleh admin lewat dashboard.
+          </p>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <h3>Penawaran Spesial Mahasiswa</h3>
+            <p>
+              Dapatkan laptop dengan spesifikasi mumpuni untuk coding, desain,
+              dan multitasking.
+            </p>
+            <div class="hero-specs">
+              <span class="pill">RAM 16 GB</span>
+              <span class="pill">SSD 512 GB</span>
+              <span class="pill">Layar IPS</span>
+              <span class="pill">Garansi resmi</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Katalog Laptop</h2>
+          <p>
+            Tekan tombol <strong>Tambah ke Cart</strong> di bawah setiap produk
+            untuk checkout.
+          </p>
+        </div>
+        <div id="productGrid" class="product-grid"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div>
+          © <span id="yearSpan"></span> LaptopStore. All rights reserved.
+        </div>
+        <div class="text-muted">
+          Logged in sebagai: <span class="current-username"></span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("yearSpan").textContent =
+        new Date().getFullYear();
+    </script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/shop.js" defer></script>
+  </body>
+</html>

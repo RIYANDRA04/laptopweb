@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laptop Store - Daftar</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="auth-page">
+    <div class="auth-container">
+      <h1 class="logo">Laptop<span>Store ryan</span></h1>
+      <h2>Buat Akun Baru</h2>
+      <p class="text-muted mt-1">
+        Daftar sebagai <strong>user biasa</strong> untuk bisa belanja laptop di
+        LaptopStore ryan.
+      </p>
+      <form id="registerForm" class="mt-2">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" autocomplete="username" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            autocomplete="new-password"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password2">Ulangi Password</label>
+          <input
+            type="password"
+            id="password2"
+            autocomplete="new-password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn primary">Daftar</button>
+      </form>
+      <p class="hint">
+        Sudah punya akun? <a href="index.html">Login di sini</a>.
+      </p>
+    </div>
+
+    <script src="js/register.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laptop Store - About</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container nav-inner">
+        <div class="brand">Laptop<span>Store ryan</span></div>
+        <nav class="nav-links">
+          <a href="shop.html">Shop</a>
+          <a href="about.html" class="active">About</a>
+          <a href="orders.html">Pesanan</a>
+          <a href="cart.html">
+            Cart <span id="cartCount" class="badge">0</span>
+          </a>
+          <a href="admin.html" class="admin-link" style="display: none">
+            Admin
+          </a>
+          <a href="#" data-logout>Logout</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="section">
+        <h2 class="page-title">
+          Tentang
+          <span style="color: #4f46e5; font-weight: 700"
+            >LaptopStore ryan</span
+          >
+        </h2>
+        <p class="text-muted mt-1">
+          <strong>LaptopStore ryan</strong> adalah prototipe aplikasi web
+          penjualan laptop yang dirancang menyerupai toko online sungguhan: ada
+          login, katalog produk, keranjang belanja, checkout, riwayat pesanan,
+          hingga dashboard admin untuk memantau order. Cocok dijadikan bahan
+          tugas, portofolio, atau dasar pengembangan proyek e-commerce yang
+          lebih besar.
+        </p>
+      </section>
+
+      <section class="section about-grid">
+        <div class="about-card">
+          <h3>
+            Mengapa
+            <span style="color: #4f46e5; font-weight: 600"
+              >LaptopStore ryan</span
+            >
+            Menarik?
+          </h3>
+          <ul class="checklist">
+            <li>
+              <strong>Tampilan responsif</strong> &mdash; nyaman dilihat di
+              laptop, tablet, maupun smartphone tanpa perlu zoom manual.
+            </li>
+            <li>
+              <strong>Dua level pengguna</strong> &mdash; bisa login sebagai
+              <em>user biasa</em> untuk belanja, atau sebagai
+              <em>admin</em> untuk memantau semua pesanan.
+            </li>
+            <li>
+              <strong>Shop yang hidup</strong> &mdash; setiap produk punya
+              gambar, nama, deskripsi, dan harga yang ditarik dari database,
+              bukan sekadar HTML statis.
+            </li>
+            <li>
+              <strong>Cart & Checkout beneran</strong> &mdash; keranjang
+              disimpan di session, total otomatis dihitung, dan saat checkout
+              pesanan disimpan ke database.
+            </li>
+            <li>
+              <strong>Riwayat pesanan per user</strong> &mdash; setiap akun
+              punya halaman pesanan sendiri, sehingga terasa seperti akun toko
+              online sungguhan.
+            </li>
+            <li>
+              <strong>Dashboard admin</strong> &mdash; admin bisa melihat semua
+              order yang masuk lengkap dengan siapa yang pesan dan apa saja isi
+              keranjangnya.
+            </li>
+          </ul>
+        </div>
+
+        <div class="about-card">
+          <h3>Di Balik Layar: Teknologi</h3>
+          <p>
+            <strong>LaptopStore ryan</strong> dibangun dengan stack yang
+            sengaja dibuat sederhana namun realistis, sehingga mudah dipelajari
+            dan dikembangkan.
+          </p>
+          <ul class="checklist">
+            <li>
+              <strong>Frontend:</strong> HTML, CSS, dan JavaScript murni. Tanpa
+              framework berat, sehingga struktur kodenya mudah diikuti.
+            </li>
+            <li>
+              <strong>Backend:</strong> Node.js + Express sebagai REST API yang
+              menangani login, produk, cart, checkout, dan data pesanan.
+            </li>
+            <li>
+              <strong>Database:</strong> SQLite dengan file
+              <code>store.db</code> yang otomatis dibuat dan di-seed ketika
+              aplikasi pertama kali dijalankan.
+            </li>
+            <li>
+              <strong>Session:</strong> <code>express-session</code> untuk
+              menyimpan status login dan isi keranjang selama browser masih
+              aktif.
+            </li>
+            <li>
+              <strong>Struktur rapi:</strong> pemisahan antara
+              <code>/public</code> (frontend), <code>/routes</code> (API), dan
+              <code>/db</code> (database) sehingga enak dipelajari.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="about-card">
+          <h3>Cocok Untuk Apa?</h3>
+          <p>
+            Proyek <strong>LaptopStore ryan</strong> bisa kamu gunakan
+            sebagai:
+          </p>
+          <ul class="checklist">
+            <li>
+              Contoh lengkap aplikasi CRUD dengan login, cart, dan relasi
+              beberapa tabel.
+            </li>
+            <li>
+              Bahan tugas kuliah atau laporan praktikum pemrograman web / basis
+              data.
+            </li>
+            <li>
+              Pondasi untuk dikembangkan menjadi e-commerce yang lebih kompleks
+              (tambah pembayaran, manajemen stok, edit produk dari admin, dan
+              lain-lain).
+            </li>
+          </ul>
+          <p class="text-muted mt-1">
+            Singkatnya, <strong>LaptopStore ryan</strong> bukan hanya
+            tampilan, tapi contoh alur aplikasi web yang utuh dari frontend,
+            backend, hingga database.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div>© <span id="yearSpan"></span> LaptopStore ryan.</div>
+        <div class="text-muted">
+          Logged in sebagai: <span class="current-username"></span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("yearSpan").textContent =
+        new Date().getFullYear();
+    </script>
+    <script src="js/auth.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const user = await window.requireLogin();
+        if (!user) return;
+        await window.refreshCartBadge();
+      });
+    </script>
+  </body>
+</html>

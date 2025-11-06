@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laptop Store - Pesanan Saya</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container nav-inner">
+        <div class="brand">Laptop<span>Store ryan</span></div>
+        <nav class="nav-links">
+          <a href="shop.html">Shop</a>
+          <a href="about.html">About</a>
+          <a href="orders.html" class="active">Pesanan</a>
+          <a href="cart.html"
+            >Cart <span id="cartCount" class="badge">0</span></a
+          >
+          <a href="admin.html" class="admin-link" style="display: none"
+            >Admin</a
+          >
+          <a href="#" data-logout>Logout</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="section">
+        <h2 class="page-title">Riwayat Pesanan</h2>
+        <p class="text-muted mt-1">
+          Semua pesanan yang sudah kamu checkout akan muncul di sini.
+        </p>
+      </section>
+      <section class="section">
+        <div id="ordersContainer"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div class="text-muted">
+          Logged in sebagai: <span class="current-username"></span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("yearSpan").textContent =
+        new Date().getFullYear();
+    </script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/orders.js" defer></script>
+  </body>
+</html>

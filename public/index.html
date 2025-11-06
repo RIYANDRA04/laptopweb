@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laptop Store - Login</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="auth-page">
+    <div class="auth-container">
+      <h1 class="logo">Laptop<span>Store ryan</span></h1>
+      <h2>Masuk ke Akun</h2>
+      <p class="text-muted mt-1">
+        Silakan login sebagai <strong>admin</strong> atau
+        <strong>user</strong> untuk melanjutkan.
+      </p>
+      <form id="loginForm" class="mt-2">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" autocomplete="username" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn primary">Login</button>
+      </form>
+      <p class="hint">
+        Admin bawaan: <code>admin / admin123</code><br />
+        User bawaan: <code>user1 / user123</code> (opsional, bisa buat akun
+        sendiri)<br />
+        Belum punya akun? <a href="register.html">Daftar di sini</a>.
+      </p>
+    </div>
+    <script src="js/auth.js" defer></script>
+  </body>
+</html>
