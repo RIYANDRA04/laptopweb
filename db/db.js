@@ -2,13 +2,21 @@ const fs = require("fs");
 const path = require("path");
 const Database = require("better-sqlite3");
 
-// Pastikan direktori db ada (Railway kadang tidak membuatnya)
-const dbDir = path.join(__dirname);
+// 🧠 Tentukan lokasi database secara adaptif
+// Jika di Railway (NODE_ENV=production), simpan di /data
+// Jika di lokal, simpan di folder project
+const isProd = process.env.NODE_ENV === "production";
+const dbDir = isProd ? "/data" : __dirname;
+
+// Pastikan direktori database ada
 if (!fs.existsSync(dbDir)) {
   fs.mkdirSync(dbDir, { recursive: true });
 }
 
 const dbPath = path.join(dbDir, "store.db");
+console.log(`✅ Database path: ${dbPath}`);
+
+// Buat koneksi ke SQLite
 const db = new Database(dbPath);
 
 // ====== Buat tabel jika belum ada ======
@@ -69,7 +77,7 @@ if (userCount === 0) {
   );
   insertUser.run("admin", "admin123", "admin");
   insertUser.run("user1", "user123", "user");
-  console.log("Seeded users table");
+  console.log("✅ Seeded users table");
 }
 
 // ====== Seed default products ======
@@ -140,7 +148,7 @@ if (productCount === 0) {
   });
   insertMany(products);
 
-  console.log("Seeded products table");
+  console.log("✅ Seeded products table");
 }
 
 module.exports = db;
