@@ -1,31 +1,36 @@
 const express = require("express");
 const session = require("express-session");
 const path = require("path");
+
 const app = express();
 const apiRoutes = require("./routes/api");
 
-// Support JSON dan form data
+// Middleware untuk parsing JSON dan form
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Fix session agar aman di Railway (HTTPS)
+// ✅ Pastikan Express mempercayai proxy (Railway pakai HTTPS proxy)
 app.set("trust proxy", 1);
+
+// ✅ Konfigurasi session untuk production (HTTPS + cookie aman)
 app.use(
   session({
     secret: "laptop-shop-secret",
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: true, // cookie hanya aktif di HTTPS
-      sameSite: "none", // biar bisa diakses cross-domain (frontend <-> backend)
+      secure: true, // aktifkan hanya di HTTPS
+      sameSite: "none", // izinkan cookie cross-domain
+      httpOnly: true, // tidak bisa diakses via JS (lebih aman)
+      maxAge: 1000 * 60 * 60 * 24, // berlaku 1 hari
     },
   })
 );
 
-// Folder public
+// Folder public (frontend)
 app.use(express.static(path.join(__dirname, "public")));
 
-// API routes
+// Routing API
 app.use("/api", apiRoutes);
 
 // Default route (homepage)
@@ -36,7 +41,7 @@ app.get("/", (req, res) => {
 // Gunakan port dinamis Railway
 const PORT = process.env.PORT || 3000;
 
-// Host 0.0.0.0 agar bisa diakses publik
+// Gunakan host 0.0.0.0 agar bisa diakses publik
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`✅ Server running on port ${PORT}`);
 });
